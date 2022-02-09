@@ -30,34 +30,41 @@ const render = function() {
     if (toDoData.length == 0) {
         localStorage.clear();
     } else {
-    toDoData.forEach(function(item, index, arr) {
-        const li = document.createElement('li');
-        li.innerHTML = `<div class="task-wrapper">
-                            <p>${item.text}</p>
-                            <div class="buttons-wrapper">
-                                <button class="delete-task">Delete task</button>
-                                <button class="isCompleted">Done!</button>
-                            </div>
-                        </div>`;  
-        if (item.completed) {
-            completedList.append(li);
-        } else {
-            uncompletedList.append(li);
-        }
-        item.li = li.innerHTML;
+        toDoData.forEach(function(item, index, arr) {
+            const li = document.createElement('li');
+            li.innerHTML = `<div class="task-wrapper">
+                                <p>${item.text}</p>
+                                <div class="buttons-wrapper">
+                                    <button class="delete-task">Delete task</button>
+                                    <button class="isCompleted">Done!</button>
+                                </div>
+                            </div>`;  
+            if (item.completed) {
+                completedList.append(li);
+                li.querySelector('.isCompleted').innerHTML = 'Return';
+            } else {
+                uncompletedList.append(li);
+            }
+            item.li = li.innerHTML;
 
-        li.querySelector('.isCompleted').addEventListener('click', function() {
-            item.completed = !item.completed;
-            render();
-        });
+            li.querySelector('.isCompleted').addEventListener('click', function() {
+                li.style.opacity = '0';
+                setTimeout(() => {
+                    item.completed = !item.completed;
+                    render();
+                }, 500);              
+            });
 
-        li.querySelector('.delete-task').addEventListener('click', function() {
-            arr.splice(index, 1);
-            render();
-        })
-        localStorage.toDoData = (JSON.stringify(toDoData));
-    
-       
+            li.querySelector('.delete-task').addEventListener('click', function() {
+                li.style.opacity = '0';
+                setTimeout(() => {
+                    arr.splice(index, 1);
+                    render();
+                }, 500)
+            })
+            localStorage.toDoData = (JSON.stringify(toDoData));
+        
+        
     });
 }
 }

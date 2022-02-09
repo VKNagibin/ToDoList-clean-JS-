@@ -13,14 +13,18 @@
     list-style: none;
     border-radius: 15px;
  }
+ p{
+    width: 40%;
+    overflow-x: auto;
+ }
 
  ul button{
-    margin: 0;
+   margin: 0;
  }
 
  .container{
    width: 50%;
-   margin: 0 auto;
+   margin: 0 auto 20px auto;
    display: flex;
    flex-direction: column;
 }
@@ -34,13 +38,17 @@ ul.completed-task li{
 }
 
 fieldset {
-   /* position: relative; */
    border: 2px solid black;
+   border-radius: 15px;
 }
 
 legend{
-   /* position: relative; */
    margin-left: 50px;
+   background: rgb(127, 10, 194);
+   padding: 5px 10px;
+   border-radius: 15px;
+   border: 2px solid black;
+   color:blanchedalmond;
 }
 
 input[type=text]{
@@ -58,6 +66,15 @@ input[type=text]{
     padding: 10px;
     margin: 15px 0;
     box-shadow: inset 0px -5px 20px 0px rgba(87, 1, 173, 0.7);
+    cursor: pointer;
+    transition: transform .5s;
+ }
+ button:hover, input[type=submit]:hover{
+   transform: scale(120%);
+ }
+
+.isCompleted{
+   margin-left: 20px;
  }
 
 
@@ -80,6 +97,7 @@ input[type=text]{
     padding: 15px;
     border: 2px solid black;
     margin: 5px auto 0px auto;
+    transition: opacity .5s;
  }
 
  .task-wrapper{
@@ -92,3 +110,4 @@ input[type=text]{
    margin-top: 30px !important;
    padding: 15px 0;
  }
+
